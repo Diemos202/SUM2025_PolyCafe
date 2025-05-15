@@ -8,4 +8,10 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BLLPolyCafe\BLLPolyCafe.csproj" />
+    <ProjectReference Include="..\DTO_PolyCafe\DTO_PolyCafe.csproj" />
+    <ProjectReference Include="..\UTIL_PolyCafe\UTIL_PolyCafe.csproj" />
+  </ItemGroup>
+
 </Project>

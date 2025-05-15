@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DAL_PolyCafe\DAL_PolyCafe.csproj" />
+    <ProjectReference Include="..\DTO_PolyCafe\DTO_PolyCafe.csproj" />
+  </ItemGroup>
+
 </Project>
