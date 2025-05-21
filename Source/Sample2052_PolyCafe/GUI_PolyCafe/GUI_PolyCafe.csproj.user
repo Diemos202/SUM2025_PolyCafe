@@ -1,6 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Compile Update="frmChiTietPhieu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="frmDoanhThuLoaiSP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="frmDoanhThuNhanVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="frmLoaiSanPham.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -10,7 +22,19 @@
     <Compile Update="frmNhanVien.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="frmPhieuBanHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="frmResetPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="frmSanPham.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="frmTheLuuDong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="frmThongTin.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="frmWelcome.cs">

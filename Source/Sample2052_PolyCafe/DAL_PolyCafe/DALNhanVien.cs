@@ -12,7 +12,6 @@ namespace DAL_PolyCafe
 {
     public class DALNhanVien
     {
-        // Lây nhân viên bằng hàm Value
         public NhanVien getNhanVien(string email, string password)
         {
             string sql = "SELECT * FROM NhanVien WHERE Email=@0 AND MatKhau=@1";
@@ -22,8 +21,6 @@ namespace DAL_PolyCafe
             NhanVien nv = DBUtil.Value<NhanVien>(sql, thamSo);
             return nv;
         }
-
-        // Lây nhân viên bằng hàm Query 
 
         public NhanVien? getNhanVien1(string email, string password)
         {
@@ -76,19 +73,12 @@ namespace DAL_PolyCafe
                 while (reader.Read())
                 {
                     NhanVien entity = new NhanVien();
-                    entity.MaNhanVien = reader.GetString(0);
-                    entity.HoTen = reader.GetString(1);
-                    entity.Email = reader.GetString(2);
-                    entity.MatKhau = reader.GetString(3);
-                    entity.VaiTro = reader.GetBoolean(4);
-                    entity.TrangThai = reader.GetBoolean(5);
-                    //entity.MaNhanVien = reader.GetString("MaNhanVien");
-                    //entity.HoTen = reader.GetString("HoTen");
-                    //entity.Email = reader.GetString("Email");
-                    //entity.MatKhau = reader.GetString("MatKhau");
-                    //entity.VaiTro = reader.GetBoolean("VaiTro");
-                    //entity.TrangThai = reader.GetBoolean("TrangThai");
-
+                    entity.MaNhanVien = reader.GetString("MaNhanVien");
+                    entity.HoTen = reader.GetString("HoTen");
+                    entity.Email = reader.GetString("Email");
+                    entity.MatKhau = reader.GetString("MatKhau");
+                    entity.VaiTro = reader.GetBoolean("VaiTro");
+                    entity.TrangThai = reader.GetBoolean("TrangThai");
                     list.Add(entity);
                 }
             }
@@ -104,6 +94,17 @@ namespace DAL_PolyCafe
             String sql = "SELECT * FROM NhanVien";
             return SelectBySql(sql, new List<object>());
         }
+
+    
+        public NhanVien selectById(string id)
+        {
+            String sql = "SELECT * FROM NhanVien WHERE MaNhanVien=@0";
+            List<object> thamSo = new List<object>();
+            thamSo.Add(id);
+            List<NhanVien> list = SelectBySql(sql, thamSo);
+            return list.Count > 0 ? list[0] : null;
+        }
+
         public void insertNhanVien(NhanVien nv)
         {
             try
@@ -125,6 +126,46 @@ namespace DAL_PolyCafe
             }
 
         }
+
+        public void updateNhanVien(NhanVien nv)
+        {
+            try
+            {
+                string sql = @"UPDATE NhanVien 
+                   SET HoTen = @1, Email = @2, MatKhau = @3, VaiTro = @4, TrangThai = @5 
+                   WHERE MaNhanVien = @0";
+                List<object> thamSo = new List<object>();
+                thamSo.Add(nv.MaNhanVien);
+                thamSo.Add(nv.HoTen);
+                thamSo.Add(nv.Email);
+                thamSo.Add(nv.MatKhau);
+                thamSo.Add(nv.VaiTro);
+                thamSo.Add(nv.TrangThai);
+                DBUtil.Update(sql, thamSo);
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+
+        }
+
+        public void deleteNhanVien(string maNv)
+        {
+            try
+            {
+                string sql = "DELETE FROM NhanVien WHERE MaNhanVien = @0";
+                List<object> thamSo = new List<object>();
+                thamSo.Add(maNv);
+                DBUtil.Update(sql, thamSo);
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+
+        }
+
         public bool checkEmailExists(string email)
         {
             string sql = "SELECT COUNT(*) FROM NhanVien WHERE Email = @0";
@@ -133,7 +174,6 @@ namespace DAL_PolyCafe
             object result = DBUtil.ScalarQuery(sql, thamSo);
             return Convert.ToInt32(result) > 0;
         }
-
 
         public string generateMaNhanVien()
         {

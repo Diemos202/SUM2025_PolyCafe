@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             progressBar = new ProgressBar();
+            label1 = new Label();
             SuspendLayout();
             // 
             // progressBar
@@ -38,6 +39,17 @@
             progressBar.Size = new Size(801, 10);
             progressBar.TabIndex = 0;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = Color.Transparent;
+            label1.ForeColor = SystemColors.AppWorkspace;
+            label1.Location = new Point(621, 422);
+            label1.Name = "label1";
+            label1.Size = new Size(180, 15);
+            label1.TabIndex = 1;
+            label1.Text = "Designed by chantt and honght7";
+            // 
             // frmWelcome
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -45,6 +57,7 @@
             BackgroundImage = Properties.Resources.img_coffe;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(800, 450);
+            Controls.Add(label1);
             Controls.Add(progressBar);
             DoubleBuffered = true;
             MaximumSize = new Size(816, 489);
@@ -54,10 +67,12 @@
             Text = "Chào mừng đến với PolyCafe";
             FormClosing += Welcome_FormClosing;
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private ProgressBar progressBar;
+        private Label label1;
     }
 }

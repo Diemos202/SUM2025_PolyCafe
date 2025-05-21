@@ -22,6 +22,7 @@ namespace BLL_PolyCafe
 
             return dalNhanVien.getNhanVien1(username, password);
         }
+
         public bool ResetMatKhau(string email, string mk)
         {
             try
@@ -43,6 +44,7 @@ namespace BLL_PolyCafe
         {
             return dalNhanVien.selectAll();
         }
+
 
         public string InsertNhanVien(NhanVien nv)
         {
@@ -67,6 +69,42 @@ namespace BLL_PolyCafe
             }
         }
 
+        public string UpdateNhanVien(NhanVien nv)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(nv.MaNhanVien))
+                {
+                    return "Mã nhân viên không hợp lệ.";
+                }
 
+                dalNhanVien.updateNhanVien(nv);
+                return string.Empty;
+            }
+            catch (Exception ex)
+            {
+                //return "Cập nhật không thành công.";
+                return "Lỗi: " + ex.Message;
+            }
+        }
+
+        public string DeleteNhanVien(string maNV)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(maNV))
+                {
+                    return "Mã nhân viên không hợp lệ.";
+                }
+
+                dalNhanVien.deleteNhanVien(maNV);
+                return string.Empty;
+            }
+            catch (Exception ex)
+            {
+                //return "Xóa không thành công.";
+                return "Lỗi: " + ex.Message;
+            }
+        }
     }
 }

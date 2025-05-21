@@ -1,4 +1,8 @@
-﻿using System;
+﻿/*
+    Ứng dụng được thiết kế bởi ChanTT và HongHT7
+    Phục vụ cho môn học SOF2052 - FPS Đồng Nai
+ */
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,7 +20,6 @@ namespace GUI_PolyCafe
         public frmMainForm()
         {
             InitializeComponent();
-            CheckPermission();
 
         }
 
@@ -42,8 +45,9 @@ namespace GUI_PolyCafe
 
         private void đổiMậtKhẩuToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmResetPassword change = new frmResetPassword();
-            change.ShowDialog();
+            //openChildForm(new ResetPassword());
+            frmResetPassword reset = new frmResetPassword();
+            reset.ShowDialog();
         }
 
         private void thoátToolStripMenuItem_Click(object sender, EventArgs e)
@@ -75,13 +79,14 @@ namespace GUI_PolyCafe
 
         private void thẻLưuĐộngToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            openChildForm(new frmTheLuuDong());
         }
 
        
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            
+            openChildForm(new frmPhieuBanHang());
         }
 
         private void VaiTroNhanVien()
@@ -90,31 +95,7 @@ namespace GUI_PolyCafe
             nhanVienToolStripMenuItem.Visible = false;
             doanhThuToolStripMenuItem.Visible = false;
         }
-        private void CheckPermission()
-        {
-            if (AuthUtil.IsLogin())
-            {
-                toolStripUserName.Text = AuthUtil.user.HoTen;
-                danhMucToolStripMenuItem.Visible = true;
-                banHangToolStripMenuItem.Visible = true;
-                nhanVienToolStripMenuItem.Visible = true;
-                doanhThuToolStripMenuItem.Visible = true;
-                if (AuthUtil.user.VaiTro == false)
-                {
-                    VaiTroNhanVien();
-                }
-            }
-            else
-            {
-                heThongToolStripMenuItem.Visible = true; // Xác định xem điều khiển có hiển thị trên giao diện hay không.
-                dangXuatToolStripMenuItem.Enabled = false; // Xác định xem điều khiển có thể tương tác hay không.
-                thongTinTaiKhoanToolStripMenuItem.Enabled = false;
-                danhMucToolStripMenuItem.Visible = false;
-                banHangToolStripMenuItem.Visible = false;
-                nhanVienToolStripMenuItem.Visible = false;
-                doanhThuToolStripMenuItem.Visible = false;
-            }
-        }
+        
 
         private void timerSystem_Tick(object sender, EventArgs e)
         {
@@ -122,7 +103,9 @@ namespace GUI_PolyCafe
                + DateTime.Now.ToString("dd/MM/yyyy");
             s = s + " - " + DateTime.Now.ToString("hh:mm:ss tt");
             toolStripTimer.Text = s;
-           
+            Text = Text.Substring(1, Text.Length - 1) +
+            Text.Substring(0, 1);
+
         }
 
         private void nhanVienToolStripMenuItem_Click(object sender, EventArgs e)
@@ -137,27 +120,27 @@ namespace GUI_PolyCafe
 
         private void sanPhamToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           
+            openChildForm(new frmSanPham());
         }
 
         private void loaiSanPhamToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+            openChildForm(new frmLoaiSanPham());
         }
 
         private void loaiHangToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           
+            openChildForm(new frmDoanhThuLoaiSP());
         }
 
         private void tkNhanVienToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           
+            openChildForm(new frmDoanhThuNhanVien());
         }
 
         private void phieuBanHangToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           
+            openChildForm(new frmPhieuBanHang());
         }
     }
 }

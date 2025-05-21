@@ -1,3 +1,7 @@
+/*
+    Ứng dụng được thiết kế bởi ChanTT và HongHT7
+    Phục vụ cho môn học SOF2052 - FPS Đồng Nai
+ */
 namespace GUI_PolyCafe
 {
     public partial class frmWelcome : Form

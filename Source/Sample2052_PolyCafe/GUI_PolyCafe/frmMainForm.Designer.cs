@@ -144,7 +144,7 @@
             // 
             theLuuDongToolStripMenuItem.Image = Properties.Resources.My_tickets;
             theLuuDongToolStripMenuItem.Name = "theLuuDongToolStripMenuItem";
-            theLuuDongToolStripMenuItem.Size = new Size(184, 26);
+            theLuuDongToolStripMenuItem.Size = new Size(183, 26);
             theLuuDongToolStripMenuItem.Text = "Thẻ lưu động";
             theLuuDongToolStripMenuItem.Click += thẻLưuĐộngToolStripMenuItem_Click;
             // 
@@ -152,7 +152,7 @@
             // 
             phieuBanHangToolStripMenuItem.Image = Properties.Resources.Ordering;
             phieuBanHangToolStripMenuItem.Name = "phieuBanHangToolStripMenuItem";
-            phieuBanHangToolStripMenuItem.Size = new Size(184, 26);
+            phieuBanHangToolStripMenuItem.Size = new Size(183, 26);
             phieuBanHangToolStripMenuItem.Text = "Phiếu bán hàng";
             phieuBanHangToolStripMenuItem.Click += phieuBanHangToolStripMenuItem_Click;
             // 

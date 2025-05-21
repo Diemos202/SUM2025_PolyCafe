@@ -49,7 +49,6 @@ namespace GUI_PolyCafe
 
         private void btnHide_Click(object sender, EventArgs e)
         {
-
             if (txtMatKhauCu.PasswordChar == '\0')
             {
                 btnShow.BringToFront();
@@ -116,22 +115,15 @@ namespace GUI_PolyCafe
                 }
                 else
                 {
+                    AuthUtil.user.MatKhau = txtMatKhauMoi.Text;
+
                     if (busNhanVien.ResetMatKhau(AuthUtil.user.Email, txtMatKhauMoi.Text))
                     {
                         MessageBox.Show("Cập nhật mật khẩu thành công!!!");
-                        AuthUtil.user.MatKhau = txtMatKhauMoi.Text;
-                        Clear();
                     }
                     else MessageBox.Show("Đổi mật khẩu thất bại, vui lòng kiểm tra lại!!!");
                 }
             }
-        }
-
-        private void Clear()
-        {
-            txtMatKhauCu.Clear();
-            txtMatKhauMoi.Clear();
-            txtXacNhanMatKhau.Clear();
         }
     }
 }
