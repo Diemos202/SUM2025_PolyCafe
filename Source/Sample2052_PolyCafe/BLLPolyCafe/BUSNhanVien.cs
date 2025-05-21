@@ -39,6 +39,34 @@ namespace BLL_PolyCafe
             }
         }
 
+        public List<NhanVien> GetNhanVienList()
+        {
+            return dalNhanVien.selectAll();
+        }
+
+        public string InsertNhanVien(NhanVien nv)
+        {
+            try
+            {
+                nv.MaNhanVien = dalNhanVien.generateMaNhanVien();
+                if (string.IsNullOrEmpty(nv.MaNhanVien))
+                {
+                    return "Mã nhân viên không hợp lệ.";
+                }
+                if (dalNhanVien.checkEmailExists(nv.Email))
+                {
+                    return "Email đã tồn tại.";
+                }
+                dalNhanVien.insertNhanVien(nv);
+                return string.Empty;
+            }
+            catch (Exception ex)
+            {
+                //return "Thêm mới không thành công.";
+                return "Lỗi: " + ex.Message;
+            }
+        }
+
 
     }
 }

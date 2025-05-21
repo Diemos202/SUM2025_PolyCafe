@@ -127,7 +127,7 @@ namespace GUI_PolyCafe
 
         private void nhanVienToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+            openChildForm(new frmNhanVien());
         }
 
         private void pnMain_Paint(object sender, PaintEventArgs e)

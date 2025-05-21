@@ -66,5 +66,89 @@ namespace DAL_PolyCafe
                 throw;
             }
         }
+
+        public List<NhanVien> SelectBySql(string sql, List<object> args, CommandType cmdType = CommandType.Text)
+        {
+            List<NhanVien> list = new List<NhanVien>();
+            try
+            {
+                SqlDataReader reader = DBUtil.Query(sql, args);
+                while (reader.Read())
+                {
+                    NhanVien entity = new NhanVien();
+                    entity.MaNhanVien = reader.GetString(0);
+                    entity.HoTen = reader.GetString(1);
+                    entity.Email = reader.GetString(2);
+                    entity.MatKhau = reader.GetString(3);
+                    entity.VaiTro = reader.GetBoolean(4);
+                    entity.TrangThai = reader.GetBoolean(5);
+                    //entity.MaNhanVien = reader.GetString("MaNhanVien");
+                    //entity.HoTen = reader.GetString("HoTen");
+                    //entity.Email = reader.GetString("Email");
+                    //entity.MatKhau = reader.GetString("MatKhau");
+                    //entity.VaiTro = reader.GetBoolean("VaiTro");
+                    //entity.TrangThai = reader.GetBoolean("TrangThai");
+
+                    list.Add(entity);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return list;
+        }
+
+        public List<NhanVien> selectAll()
+        {
+            String sql = "SELECT * FROM NhanVien";
+            return SelectBySql(sql, new List<object>());
+        }
+        public void insertNhanVien(NhanVien nv)
+        {
+            try
+            {
+                string sql = @"INSERT INTO NhanVien (MaNhanVien, HoTen, Email, MatKhau, VaiTro, TrangThai) 
+                   VALUES (@0, @1, @2, @3, @4, @5)";
+                List<object> thamSo = new List<object>();
+                thamSo.Add(nv.MaNhanVien);
+                thamSo.Add(nv.HoTen);
+                thamSo.Add(nv.Email);
+                thamSo.Add(nv.MatKhau);
+                thamSo.Add(nv.VaiTro);
+                thamSo.Add(nv.TrangThai);
+                DBUtil.Update(sql, thamSo);
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+
+        }
+        public bool checkEmailExists(string email)
+        {
+            string sql = "SELECT COUNT(*) FROM NhanVien WHERE Email = @0";
+            List<object> thamSo = new List<object>();
+            thamSo.Add(email);
+            object result = DBUtil.ScalarQuery(sql, thamSo);
+            return Convert.ToInt32(result) > 0;
+        }
+
+
+        public string generateMaNhanVien()
+        {
+            string prefix = "NV";
+            string sql = "SELECT MAX(MaNhanVien) FROM NhanVien";
+            List<object> thamSo = new List<object>();
+            object result = DBUtil.ScalarQuery(sql, thamSo);
+            if (result != null && result.ToString().StartsWith(prefix))
+            {
+                string maxCode = result.ToString().Substring(2);
+                int newNumber = int.Parse(maxCode) + 1;
+                return $"{prefix}{newNumber:D3}";
+            }
+
+            return $"{prefix}001";
+        }
     }
 }
