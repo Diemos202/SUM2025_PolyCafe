@@ -42,7 +42,8 @@ namespace GUI_PolyCafe
 
         private void đổiMậtKhẩuToolStripMenuItem_Click(object sender, EventArgs e)
         {
-          
+            frmResetPassword change = new frmResetPassword();
+            change.ShowDialog();
         }
 
         private void thoátToolStripMenuItem_Click(object sender, EventArgs e)

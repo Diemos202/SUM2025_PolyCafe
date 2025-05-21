@@ -50,6 +50,21 @@ namespace DAL_PolyCafe
             return null;
         }
 
-        
+        public void ResetMatKhau(string mk, string email)
+        {
+            try
+            {
+                string sql = "UPDATE NhanVien SET MatKhau = @0 WHERE Email = @1";
+                List<object> thamSo = new List<object>();
+                thamSo.Add(mk);
+                thamSo.Add(email);
+                DBUtil.Update(sql, thamSo);
+
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+        }
     }
 }

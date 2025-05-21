@@ -38,9 +38,9 @@ namespace GUI_PolyCafe
         {
             string username = txtUsername.Text;
             string password = txtPassword.Text;
-            NhanVien nv = BUSNhanVien.DangNhap("admin@gmail.com", "admin123");
+            //NhanVien nv = BUSNhanVien.DangNhap("admin@gmail.com", "admin123");
             //NhanVien nv = BUSNhanVien.DangNhap("hung.pham@gmail.vn", "hashed_hung789");
-            //NhanVien nv = BUSNhanVien.DangNhap(username, password);
+            NhanVien nv = BUSNhanVien.DangNhap(username, password);
             if (nv == null)
             {
                 MessageBox.Show(this, "Tài khoản hoặc mật khẩu không chính xác");
