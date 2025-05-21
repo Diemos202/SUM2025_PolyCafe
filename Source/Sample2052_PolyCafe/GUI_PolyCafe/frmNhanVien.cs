@@ -31,6 +31,16 @@ namespace GUI_PolyCafe
             BUSNhanVien bus = new BUSNhanVien();
             dgrDanhSachNV.DataSource = null;
             dgrDanhSachNV.DataSource = bus.GetNhanVienList();
+            dgrDanhSachNV.Columns["MaNhanVien"].HeaderText = "Mã Nhân Viên";
+            dgrDanhSachNV.Columns["HoTen"].HeaderText = "Họ Tên";
+            dgrDanhSachNV.Columns["Email"].HeaderText = "Email";
+            dgrDanhSachNV.Columns["MatKhau"].HeaderText = "Mật Khẩu";
+            dgrDanhSachNV.Columns["VaiTroText"].HeaderText = "Vai Trò";
+            dgrDanhSachNV.Columns["TrangThaiText"].HeaderText = "Trạng Thái";
+            dgrDanhSachNV.Columns["VaiTro"].Visible = false;
+            dgrDanhSachNV.Columns["TrangThai"].Visible = false;
+
+            dgrDanhSachNV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void dgrDanhSachNV_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
